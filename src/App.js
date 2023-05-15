@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from 'react'
+import "./App.css";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <div className='app'>
+      <h1><u>Food Recipe HUB</u>🥗</h1>
+      <div className='app__searchform'>
+        <input type='text' 
+         placeholder ='Type the Ingredient'
+         autoComplete='off'
+          className='app__search'
+          />
+        <select className='app__healthLables'>
+            <option value ="vegan">vegan</option>
+          
+          </select>  
+          <input type='submit' value='Get Recipe' className='app__submit'/>
+
+      </div>
+       </div>
+  )
+    
+  
 }
 
-export default App;
+export default App
