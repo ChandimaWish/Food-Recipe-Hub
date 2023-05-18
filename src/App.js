@@ -5,9 +5,12 @@ import Axios from 'axios';
 function App() {
   const YOUR_APP_ID ="fea853ba" ;
   const YOUR_APP_KEY = "3a0226421c380a19d71ce380e1205698";
+  const [query,setQuery] = useState("");
+  const [healthLable,setHealthLable]= useState("vegetarian");
+
   const [recipes,setRecipes] = useState([]);
 
-  const url =  `https://api.edamam.com/search?q=chicken&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}&health=alcohol-free`;
+  const url =  `https://api.edamam.com/search?q=${query}&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}&health=${healthLable}`;
 
   const getRecipeInfo = async () =>
   {
@@ -17,25 +20,35 @@ function App() {
 
   } ;
 
+
+  const onSubmit = (e) =>{
+    e.preventDefault();  //will prevent page from reloding 
+    getRecipeInfo();
+  }
+
   return (
       <div className='app'>
       <h1 onClick={getRecipeInfo}>
         <u>Food Recipe HUB</u>🥗</h1>
-      <div className='app__searchform'>
+      <form className='app__searchform' onSubmit={onSubmit}>
+        
         <input type='text' 
          placeholder ='Type the Ingredient'
          autoComplete='off' 
           className='app__input'
+          onChange={(e) =>{setQuery(e.target.value)}}
           />
         <select className='app__healthLables'>
-            <option value ="vegan">vegan</option>
+            <option value ="vegan">vegan</option> 
           
           </select>  
           <input type='submit' value='Get Recipe' className='app__submit'/>
+        </form>
+        
 
-      </div>
+      
        </div>
-  )
+  );
     
   
 }
