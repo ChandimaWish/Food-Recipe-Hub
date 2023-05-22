@@ -65,7 +65,7 @@ function App() {
           </select>
           <input type='submit' value='Get Recipe' className='app__submit'/>
         </form>
-        <div className='app_recipes'>
+        <div className='app__recipes'>
         {recipes.map((recipe)=>{
           return <Recipetile recipe={recipe}/>;
         })}
